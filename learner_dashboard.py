@@ -6,14 +6,17 @@ def display_menu():
                 DASHBOARD""")
     print("*"*40)
 
-    print("\n1.Add Learner")
-    print("2.Exit ")
+    print("\n1.Add Learner.")
+    print("2.View Learners.")
+    print("3.Update learner.")
+    print("4.Exit.")
 
 def add_learner():
     print("\n---ADD LEARNER---")
     first_name=input("\nFirst Name: ")
     last_name=input("Last Name: ")
     name=f"{first_name} {last_name}"
+
     email=input("Email: ")
     grade=input("Grade: ")
 
@@ -42,23 +45,37 @@ def add_learner():
     print("\nLearner Successfully added.")
 
 
+# Fuctions that view learners
+def view_learners():
+    print("\n---LEARNERS---")
+    #Condition checking if we have learners 
+    if len(learners)==0:
+        print("No Learners Found")
+        return
+    #Checking each and every learner in the list of learners and display them
+    for number, learner in enumerate(learners,start=1):
+ 
+        print(f"{number}.{learner["name"]}")
+
+ 
 def main():
 
     while True:
         display_menu()
 
-        choice=int(input("Choose: "))
+        choice=input("Choose: ")
 
-        if choice==1:
+        if choice=="1":
             add_learner()
-        elif choice==2:
+        elif choice=="2":
+            view_learners()
+
+        elif choice=="4":
             print("\nGoodbye.")
             break
         else:
             print("Invalid Entry.")
         
     
-
-
 
 main()
