@@ -41,7 +41,7 @@ def update_email(learner):
 def update_mark(learner):
     subject=input("Subject: ")
 
-    if subject in learner:
+    if subject in learner["subjects"]:
 
         while True:
             try:
@@ -60,21 +60,27 @@ def update_mark(learner):
 
 #Update learner function
 def update_learner():
+    print("\n---UPDATE LEARNER---")
+    #Condition checking if we have learners 
+    if len(learners)==0:
 
-    name=input("Search Name: ")
+        print("No Learners Found")
+        return
+
+    name=input("\nSearch Name: ")
 
     for learner in learners:
         if learner["name"]==name:
             while True:
-                print("---UPDATE LEARNER---")
-                print("1.\nUpdate Name.")
+                print("\n---UPDATE LEARNER---")
+                print("\n1.Update Name.")
                 print("2.Update Email.")
                 print("3.Update Grade.")
                 print("4.Update Mark.")
                 print("5.Cancel.")
 
                 
-                choice=input("Choice: ")
+                choice=input("\nChoice: ")
 
                 if choice =="1":
                     update_name(learner)
@@ -89,7 +95,7 @@ def update_learner():
                     print("Done")
                     break
         else:
-            print("Learner not found")
+            print("\nLearner not found")
 
 
 #Display Menu
@@ -157,7 +163,7 @@ def main():
     while True:
         display_menu()
 
-        choice=input("Choose: ")
+        choice=input("\nChoose: ")
 
         if choice=="1":
             add_learner()
